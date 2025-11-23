@@ -24,17 +24,22 @@ Our approach uses a two-stage machine learning pipeline:
 Input: Plasser's ground measurements
 
 Algorithm: Random Forest Classifier
+
 Output: Binary probability classification for maintenance needs
+
 Purpose: Identifies patterns requiring immediate attention
 
 ![WhatsApp Image 2025-11-23 at 10 23 47](https://github.com/user-attachments/assets/e3beaa52-e1ed-464a-bc13-e1b3b8fefc17)
 
 
-**2. Orbital-Level Regression**
+[**2. Orbital-Level Regression**](https://9000-firebase-studio-1763893024021.cluster-ocv3ypmyqfbqysslgd7zlhmxek.cloudworkstations.dev/dashboard)
+
 Input: Satellite and environmental data
 
 Algorithm: Random Forest Regressor
+
 Output: Probabilistic estimation of maintenance percentage
+
 Purpose: Pinpoints areas requiring closer inspection
 
 ![WhatsApp Image 2025-11-23 at 12 21 26](https://github.com/user-attachments/assets/605afb03-9ad7-4988-bbfa-71fba93aef7d)
