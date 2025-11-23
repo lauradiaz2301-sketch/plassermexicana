@@ -1,0 +1,29 @@
+-*- mode: compilation; default-directory: "~/Documents/code/hack-plasser/is/" -*-
+Comint started at Sun Nov 23 00:30:14
+
+/Users/ricardochanes/.venv/bin/ipython test_model.py
+No entry for terminal type "emacs";
+using dumb terminal settings.
+classified_output.csv written!
+
+===== Prediction Distribution =====
+pred
+class 0    0.7863
+class 1    0.2137
+Name: proportion, dtype: float64
+
+===== Predicted Probability Summary =====
+count    10000.000000
+mean         0.363078
+std          0.136958
+min          0.136411
+25%          0.239680
+50%          0.334073
+75%          0.481985
+max          0.856026
+Name: prob_bad, dtype: float64
+
+mean(pred) good.csv = 0.0
+mean(pred) bad.csv  = 0.527
+
+Inferior Python finished at Sun Nov 23 00:30:17

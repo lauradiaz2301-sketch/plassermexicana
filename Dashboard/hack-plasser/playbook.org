@@ -1,0 +1,57 @@
+* load + preprocess
+#+begin_src python :async :session cosa
+import pandas as pd
+import numpy as np
+from hmmlearn.hmm import GaussianHMM
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("data/data1_100.csv")
+
+# sort by timestamp in case
+df = df.sort_values("timestamp")
+
+# select useful numeric columns only
+feature_cols = [
+    "pre_level_mm","post_level_mm","pre_align_mm","post_align_mm","gauge_mm",
+    "cant_mm","squeeze_pressure_bar","lift_force_kN","align_force_kN",
+    "cycle_duration_ms","vibration_peak_g","energy_compaction_J",
+    "void_detected","ballast_density_kgm3","ballast_moisture_pct",
+    "fouling_index_pct","balast_rigidity_kN_per_mm","tamp_tool_wear_pct",
+    "stabilizer_amplitude_mm"
+]
+
+X = df[feature_cols].fillna(method="ffill").values
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+#+end_src
+
+#+RESULTS:
+: None
+
+* select states
+
+#+begin_src python :async :session cosa
+import warnings
+warnings.filterwarnings("ignore")
+
+scores = []
+components = range(2, 9)
+
+for k in components:
+    hmm = GaussianHMM(n_components=k, covariance_type="full", n_iter=200, random_state=0)
+    hmm.fit(X_scaled)
+    scores.append(hmm.bic(X_scaled))
+
+plt.plot(components, scores)
+plt.xlabel("States")
+plt.ylabel("BIC")
+plt.title("Best HMM State Count")
+plt.show()
+
+#+end_src
+
+#+RESULTS:
+: None
